@@ -1,15 +1,15 @@
 # Makefile for the UNIX library.
 # Please see LICENSE for licensing information.
-# 
+#
 
 
-# ---------	CURRENTLY SUPPORTED PLATFORMS ---------- 
+# ---------	CURRENTLY SUPPORTED PLATFORMS ----------
 
 PLATFORMS=`find ./os/ -type d | sed "s/.*\///" | sort`
 
 # --------- FLAGS AND VARIABLES --------------------
 
-CFLAGS=-D__i386__ -O2 -nostdlib -nodefaultlibs -nostdinc -fno-builtin -static -Wall 
+CFLAGS=-D__i386__ -O2 -nostdlib -nodefaultlibs -nostdinc -fno-builtin -static -Wall
 INCLUDEROOT=-I./os/$@  -I./include/unix/
 
 STDFILES=*.c lsb/*.c support/*.c sys/*.c math/*.c pthread/*.c nonstd/trio/*.c
@@ -20,12 +20,12 @@ STDFILES=*.c lsb/*.c support/*.c sys/*.c math/*.c pthread/*.c nonstd/trio/*.c
 all:
 	@echo "Makefile for the UNIX library."
 	@echo "Please see LICENSE for licensing information."
-	@echo 
+	@echo
 	@echo "Include files: ./include/unix/ "
 	@echo "Output should be: libunix.a "
-	@echo 
+	@echo
 	@echo "Usage: make [ all | clean | <platform> ] "
-	@echo 
+	@echo
 	@echo "Currently supported platforms:"
 	@echo
 	@echo $(PLATFORMS)
@@ -40,7 +40,7 @@ clean:
 # -------------- OS DEPENDENT BUILDS ---------------------------
 
 
-%: 
+%:
 	@if [ ! -d ./os/$@ ]; then echo "There is no such platform. Supported platforms are: $(PLATFORMS)"; exit 255; fi;
 	@if [ -e ./os/$@/Makefile ]; then														\
 			echo "Platform specific makefile for $@ found. Using it.";						\
@@ -49,8 +49,8 @@ clean:
 	else																					\
 			gcc $(INCLUDEROOT) -I./os/$@/ $(CFLAGS) $(STDFILES) os/$@/*.c -c;	\
 	fi;
-	ar -rc libunix.a  *.o;															
-		
+	ar -rc libunix.a  *.o;
+
 
 
 

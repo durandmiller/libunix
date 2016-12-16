@@ -5,9 +5,9 @@ This library attempts to conform to The Open Group's "The Single UNIX Specificat
 http://www.opengroup.org/onlinepubs/007908799/
 
 
-I've implemented the library as portably as possibly. All OS specific 
-code can be found under the ./os/ directory and in a subdirectory of 
-the appropriate name. Please run "make" for a list of all the 
+I've implemented the library as portably as possibly. All OS specific
+code can be found under the ./os/ directory and in a subdirectory of
+the appropriate name. Please run "make" for a list of all the
 supported systems.
 
 QUICK START TO RUNNING libUNIX ON YOUR OS
@@ -22,11 +22,11 @@ QUICK START TO RUNNING libUNIX ON YOUR OS
    and what they should do.
 
 3. Edit the file ./os/MyOS/empty.c and start implementing the
-   the stubs. You can rename empty.c or split the stubs into 
-   their own, unique files. All .c files will be compiled during 
+   the stubs. You can rename empty.c or split the stubs into
+   their own, unique files. All .c files will be compiled during
    make.
 
-4. The Makefile should automatically support your new OS 
+4. The Makefile should automatically support your new OS
    directory. You should be able to run "make MyOS" to compile
    the library.
 
@@ -46,7 +46,7 @@ USEFUL NOTES:
    of the libUNIX library. However, I've only defined an x86 compatible
    version of both. The library, by default, compiles for x86 by
    defining __i386__ on the compilation command.
-  
+
    If you want to add support for another architecture, please
    edit setjmp.c and add in your specific code within a new
    define. Then make sure your compilation command in the Makefile
